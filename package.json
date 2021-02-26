@@ -1,0 +1,29 @@
+{
+  "name": "dmit2008-assignment2a",
+  "version": "1.0.0",
+  "description": "A client application that is deployed through Heroku. It will have a dashboard, a login form and a registration form.",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server/index.js  --watch ./server",
+    "start": "node server/index.js  "
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Judy Tat",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
