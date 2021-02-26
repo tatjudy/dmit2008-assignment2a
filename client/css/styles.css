@@ -379,3 +379,30 @@ th {
   width: 1.25rem;
 }
 /*# sourceMappingURL=styles.css.map */
+
+.nav {
+  display: flex;
+  margin: 50px auto;
+  width: fit-content;
+}
+
+li {
+  margin: 0 10px;
+}
+
+.nav li a,
+.nav li a:after {
+  text-decoration: none;
+  color: #2F4F4F;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+body > header {
+  margin: 0 200px;
+}
+
+h1 {
+  font-size: 36px;
+
+}

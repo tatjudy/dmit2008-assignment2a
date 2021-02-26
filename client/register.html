@@ -9,41 +9,43 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav>
-        <ul class="nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="users.html">Users</a></li>
-        </ul>
-    </nav>
     <header>
+        <nav>
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
         <h1>Sign Up</h1>
        
       
     </header>
     <main>
-        <form id="register">
+        <aside class="app-form">
+            <header class="form-header"><h2>Register Form</h2></header>
+            <form id="register">
        
-            <div class="form-control">
-                <label for="fullname">Please enter your full name.</label>
-                <input id="fullname" type="text" name="fullname" placeholder="first and last name" value="jim foley"/>
-            </div>
-              <div class="form-control">
-                  <label for="email">Enter an valid email address</label>
-                  <input id="email" type="text" name="email" placeholder="email address for the account" value="email@workspace.com"/>
-              </div>
-
-              <div class="form-control">
-                <label for="password">Enter a secure password</label>
-                <input id="password" type="text" name="password" placeholder="password for the account" value="temp"/>
-            </div>
-
-            <div class="form-control">
-             <button type="submit">create account</button>
-            </div>
-          </form>
+                <div class="form-control">
+                    <label for="fullname">Please enter your full name.</label>
+                    <input id="fullname" type="text" name="fullname" placeholder="
+                    Enter first and last name:" value="Jane Doe"/>
+                </div>
+                  <div class="form-control">
+                      <label for="email">Enter an valid email address</label>
+                      <input id="email" type="text" name="email" placeholder="Enter an email address for the account" value="email@workplace.com"/>
+                  </div>
+    
+                  <div class="form-control">
+                    <label for="password">Enter a secure password</label>
+                    <input id="password" type="text" name="password" placeholder="Enter apassword for the account" value="pass1234"/>
+                </div>
+    
+                <div class="form-control">
+                 <button type="submit">create account</button>
+                </div>
+              </form>
+        </aside>
     </main>
 </body>
 </html>
