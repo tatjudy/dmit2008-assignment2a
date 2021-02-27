@@ -19,7 +19,7 @@ const { v4: uuidv4 } = require('uuid');
 // }
 
 
-const getFileContents = (filePath)=>{
+exports.getFileContents = (filePath)=>{
    let fileContents = JSON.parse(fs.readFileSync(path.join(__dirname, filePath)));
    //console.log(fileContents.username);
      
@@ -31,7 +31,7 @@ const getFileContents = (filePath)=>{
 getFileContents('../data/users.json');
 let userID = uuidv4();
 
-const writeFileContents = (filePath, data) =>{
+exports.writeFileContents = (filePath, data) =>{
 
     let fileContents = fs.readFileSync(path.join(__dirname, filePath));
     fileContents = JSON.parse(fileContents);
@@ -39,9 +39,8 @@ const writeFileContents = (filePath, data) =>{
     fileContents.push(data);
     fileContents = JSON.stringify(fileContents);
     fs.writeFileSync(path.join(__dirname, filePath), fileContents);
-
 }
-writeFileContents('../data/users.json', {id: userID, username:"john", email:"john@work.com", password: "321" });
+//writeFileContents('../data/users.json', {id: userID, username:"john", email:"john@work.com", password: "321" });
  
 
 // [
