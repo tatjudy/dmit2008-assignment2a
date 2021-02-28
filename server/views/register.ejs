@@ -27,18 +27,18 @@
             <form id="register" action="/register" method="POST">
        
                 <div class="form-control">
-                    <label for="username">Enter a username<span class="warning"><%- usernameWarning %></span></label>
+                    <label for="username">Enter a username<span class="warning"><%- usernameWarning %> </span></label>
                     <input id="username" type="text" name="username" placeholder="
                     Enter a username"/>
                 </div>
                   <div class="form-control">
-                      <label for="email">Enter an valid email address<span class="warning"><%- emailWarning %></span></label>
+                      <label for="email">Enter an valid email address<span class="warning emailWarning"><%- emailWarning %></span></label>
                       <input id="email" type="text" name="email" placeholder="Enter an email address for the account"/>
                   </div>
     
                   <div class="form-control">
-                    <label for="password">Enter a secure password<span class="warning"><%- passwordWarning %></span></label>
-                    <input id="password" type="text" name="password" placeholder="Enter apassword for the account" />
+                    <label for="password">Enter a secure password</label>
+                    <input id="password" type="text" name="password" placeholder="Enter a password for the account" />
                 </div>
     
                 <div class="form-control">

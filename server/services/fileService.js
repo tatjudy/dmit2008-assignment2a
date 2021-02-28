@@ -27,4 +27,6 @@ exports.writeFileContents = (filePath, data) =>{
     fs.writeFileSync(path.join(__dirname, filePath), fileContents);
 }
 
+
+
 // writeFileContents('../data/users.json', {id: userID, username:"jane", email:"jane@work.com", password: "4321" });

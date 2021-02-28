@@ -10,7 +10,9 @@ const cookSession = require('cookie-session');
 // Importing our Login Service Used With the POST Login Route
 const loginService = require('./services/loginService');
 const registerService = require('./services/registerService');
-
+const fileService = require('./services/fileService');
+const { v4: uuidv4 } = require('uuid');
+let userID = uuidv4();
 
 // create an instance of express
 const app = express();
@@ -67,14 +69,6 @@ app.use(express.static(path.join(__dirname, "../client"), {extensions: ["html", 
 
  });
 
- app.get('/register', (req, res) => {
-  res.render('register', {
-    usernameWarning: "",
-    emailWarning: "",
-    passwordWarning: ""
-  });
- });
-
  app.post('/login', (req, res)=>{
    // if your incomming name value pairs are alot then create an object
     const credentials = {
@@ -91,7 +85,7 @@ app.use(express.static(path.join(__dirname, "../client"), {extensions: ["html", 
              if(!req.session.isValid){
                  req.session.isValid = true;
              }
-             res.redirect('/dashboard')
+             res.redirect('/dashboard');
        }
 
        if(isValidUser.user === null){
@@ -120,42 +114,84 @@ app.use(express.static(path.join(__dirname, "../client"), {extensions: ["html", 
  
  });
 
- app.get('/register', (req, res)=>{
-  // user template placed inside the views directory
-  // res.render(view, data)   ejs.render(template, {data})
-  res.render('register', {username: "", email: "", password: "", usernameWarning: "", emailWarning: "", passwordWarning: ""});
+
+
+app.get('/register', (req, res) => {
+  res.render('register', {
+    usernameWarning: "",
+    emailWarning: ""
+  });
+ });
+
+ app.post('/register', (req, res)=>{
+  // if your incomming name value pairs are alot then create an object
+   const registerInfo = {
+     username:req.body.username,
+     email:req.body.email,
+     password: req.body.password
+   };
+   // isValidUser returns {user:null, emailWarning, passwordWarning}
+   // isValudUser.user !=null...
+   const isValidUser =  registerService.register(registerInfo);
+  
+      //if the isValidUser has a user returned
+      if( isValidUser.user === null){
+        fileService.getFileContents('../data/users.json');
+        
+        fileService.writeFileContents('../data/users.json', {id: userID, username:"amy", email:"amy@work.com", password: "4321" });
+        res.redirect('/login');
+      }
+
+      if(isValidUser.user !== null){
+        // req.body.email, req.body.password
+        res.render('register', {
+          usernameWarning:isValidUser.usernameWarning, 
+          emailWarning:isValidUser.emailWarning,
+          username: req.body.username,
+          email:req.body.email
+          });
+      }
+ });
+   
+
+app.post('/register', (req, res)=>{
+  // POST name value pairs in body request
+  const registerInfo = {
+    username: req.body.username,
+    email:req.body.email,
+    password: req.body.password
+   };
+   
+   
+   const isValidUser = registerService.register(registerInfo);
+  
+   res.end();
 
 });
+ 
+// <%- usernameWarning %>
+//  app.post('/register', (req, res) => {
 
- app.post('/register', (req, res) => {
+//   const registerInfo = {
+//     username:req.body.username,
+//     email:req.body.email,
+//     password:req.body.password
+//   };
   
-  // const registerUser = registerService.register();
-  // let registerUsername = req.body.username;
-  // //console.log(registerUsername);
-  // if(registerUsername === '') {
-  //   res.render('register', {
-  //     usernameWarning: `enter a username`
-  //   });
-  // }
+//   const registerTheInfo =  registerService.register(registerInfo);
 
-  const registerInfo = {
-    username:req.body.username,
-    email:req.body.email,
-    password:req.body.password
-  };
-  
-  const registerTheInfo =  registerService.register(registerInfo);
+//   const checkErrors = registerService.registerErrors(registerInfo);
 
-  const checkErrors = registerService.registerErrors(registerInfo);
-  if (registerInfo.username === '') {
-    res.render('register', {
-      emailWarning: ``,
-      usernameWarning: `Please enter a username`
-    })
+//   if (registerInfo.username === '') {
+//     res.render('register', {
+//       emailWarning: registerInfo.usernameWarning,
+//       usernameWarning: registerInfo.emailWarning,
+//       passwordWarning: registerInfo.passwordWarning
+//     });
 
-  }
+//   }
 
- });
+//  });
 
  
 
