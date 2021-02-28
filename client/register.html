@@ -24,21 +24,21 @@
     <main>
         <aside class="app-form">
             <header class="form-header"><h2>Register Form</h2></header>
-            <form id="register">
+            <form id="register" action="/register" method="POST">
        
                 <div class="form-control">
                     <label for="username">Enter a username</label>
                     <input id="username" type="text" name="username" placeholder="
-                    Enter a username" value="jane123"/>
+                    Enter a username"/>
                 </div>
                   <div class="form-control">
                       <label for="email">Enter an valid email address</label>
-                      <input id="email" type="text" name="email" placeholder="Enter an email address for the account" value="email@workplace.com"/>
+                      <input id="email" type="text" name="email" placeholder="Enter an email address for the account"/>
                   </div>
     
                   <div class="form-control">
                     <label for="password">Enter a secure password</label>
-                    <input id="password" type="text" name="password" placeholder="Enter apassword for the account" value="pass1234"/>
+                    <input id="password" type="text" name="password" placeholder="Enter apassword for the account" />
                 </div>
     
                 <div class="form-control">
@@ -47,5 +47,6 @@
               </form>
         </aside>
     </main>
+    <script src="js/register.js"></script>
 </body>
 </html>

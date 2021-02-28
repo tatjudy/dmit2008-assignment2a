@@ -6,9 +6,7 @@
 */
 const fileService = require('./fileService')
  
-// common js module  import === require
-// export import es modules  Browser...
-// exports or module.exports  requre commonjs  NODE (BUNDLER RUN BROWSER)
+
 exports.authenticate = (credential)=>{
  
    const {email, password} = {...credential}

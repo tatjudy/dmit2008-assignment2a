@@ -9,7 +9,7 @@ const cookSession = require('cookie-session');
 
 // Importing our Login Service Used With the POST Login Route
 const loginService = require('./services/loginService');
-
+const registerService = require('./services/registerService');
 
 
 // create an instance of express
@@ -42,8 +42,7 @@ app.use(cors());
 
 //Middleware Serving Static Pages from client directory
  
-app.use(express.static(path.join(__dirname, "../client"), {extensions: ["html", 'htm']})
-);
+app.use(express.static(path.join(__dirname, "../client"), {extensions: ["html", 'htm']}));
 
  
  // Routing Middleware.  
@@ -67,6 +66,15 @@ app.use(express.static(path.join(__dirname, "../client"), {extensions: ["html", 
    res.render('login', {passwordWarning:"", emailWarning:"", email:"", password:""})
 
  });
+
+ app.get('/register', (req, res) => {
+  res.render('register', {
+    usernameWarning: "",
+    emailWarning: "",
+    passwordWarning: ""
+  });
+ });
+
  app.post('/login', (req, res)=>{
    // if your incomming name value pairs are alot then create an object
     const credentials = {
@@ -83,7 +91,7 @@ app.use(express.static(path.join(__dirname, "../client"), {extensions: ["html", 
              if(!req.session.isValid){
                  req.session.isValid = true;
              }
-             res.redirect('dashboard')
+             res.redirect('/dashboard')
        }
 
        if(isValidUser.user === null){
@@ -110,7 +118,44 @@ app.use(express.static(path.join(__dirname, "../client"), {extensions: ["html", 
    
     res.end();
  
- })
+ });
+
+ app.get('/register', (req, res)=>{
+  // user template placed inside the views directory
+  // res.render(view, data)   ejs.render(template, {data})
+  res.render('register', {username: "", email: "", password: "", usernameWarning: "", emailWarning: "", passwordWarning: ""});
+
+});
+
+ app.post('/register', (req, res) => {
+  
+  // const registerUser = registerService.register();
+  // let registerUsername = req.body.username;
+  // //console.log(registerUsername);
+  // if(registerUsername === '') {
+  //   res.render('register', {
+  //     usernameWarning: `enter a username`
+  //   });
+  // }
+
+  const registerInfo = {
+    username:req.body.username,
+    email:req.body.email,
+    password:req.body.password
+  };
+  
+  const registerTheInfo =  registerService.register(registerInfo);
+
+  const checkErrors = registerService.registerErrors(registerInfo);
+  if (registerInfo.username === '') {
+    res.render('register', {
+      emailWarning: ``,
+      usernameWarning: `Please enter a username`
+    })
+
+  }
+
+ });
 
  
 
