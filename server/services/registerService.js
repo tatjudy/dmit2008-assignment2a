@@ -1,19 +1,6 @@
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const app = express();
-
-// app.use(express.urlencoded({extended:true}));
-// app.use(express.json());
-// var urlencodedParser = bodyParser.urlencoded({extended: false});
-
-// app.post('/register', urlencodedParser, function(req, res) {
-//     console.log(req.body);
-//     res.render('register', {qs: req.query});
-// });
+//register service checks if the user already exists, if they do, errors will let them know
 
 const fileService = require('./fileService')
-const { v4: uuidv4 } = require('uuid');
-let userID = uuidv4();
 
 exports.register = (registerInfo)=>{
  
