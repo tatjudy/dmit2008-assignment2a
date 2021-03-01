@@ -8,7 +8,7 @@ The login page has server side validation/authentication.
 The users page is a bonus feature which retrieves the JSON data from the server and displays it. To do this, in the index.js we create a REST API with NODE using the url /api/v1/users
 
 
-Link to Heroku App:
+Link to Heroku App: https://dmit2008-assignment2a.herokuapp.com/
 
 The Procfile specifies the commands that are executed by the app on startup.
 
