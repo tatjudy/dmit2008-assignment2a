@@ -42,7 +42,7 @@ exports.register = (registerInfo)=>{
           
      return authObj
  
-    }, {validUsername:false, validEmail:false, user:null})
+    }, {validEmail:false, validPassword:false, user:null});
  
      // ternary opertoar   ()?true:false
      // if() else

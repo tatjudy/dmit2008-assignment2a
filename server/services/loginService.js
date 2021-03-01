@@ -33,7 +33,7 @@ exports.authenticate = (credential)=>{
          
     return authObj
 
-   }, {validEmail:false, validPassword:false, user:null})
+   }, {validEmail:false, validPassword:false, user:null});
 
     // ternary opertoar   ()?true:false
     // if() else

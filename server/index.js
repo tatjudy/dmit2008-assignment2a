@@ -22,7 +22,6 @@ const app = express();
 // we can set configuration variables for the application.
 // never upload to git...
 const PORT =  process.env.PORT || 5000 ;
-
  
 // Middleware For Cross Origin Resource SHaring
 app.use(cors());
@@ -30,6 +29,12 @@ app.use(cors());
 //To get access to the name value pairs send in the message Body of POST Request.
  app.use(express.urlencoded({extended:true}));
  app.use(express.json());
+
+ app.get('/api/v1/users', (req, res) => {
+  const readUsersFile = fileService.getFileContents('../data/users.json');
+  res.json(readUsersFile);
+  return theData;
+});
 
  // Session Middleware
  app.use(cookSession({
@@ -105,7 +110,7 @@ app.use(express.static(path.join(__dirname, "../client"), {extensions: ["html", 
    const credentials = {
      email:req.body.email,
      password:req.body.password
-    };
+    }; 
     
     
     const isValidUser = loginService.authenticate(credentials);
@@ -124,21 +129,32 @@ app.get('/register', (req, res) => {
  });
 
  app.post('/register', (req, res)=>{
-  // if your incomming name value pairs are alot then create an object
+  // get the info, store into an object
+  //  to access:
+  //  username: use registerInfo.username,
+  //  email: use registerInfo.email
+  //  password: user registerInfo.password
    const registerInfo = {
      username:req.body.username,
      email:req.body.email,
      password: req.body.password
    };
+
+   const { v4: uuidv4 } = require('uuid');
+    let userID = uuidv4();
+
+   const getFile = fileService.getFileContents('../data/users.json');
+
+
    // isValidUser returns {user:null, emailWarning, passwordWarning}
    // isValudUser.user !=null...
    const isValidUser =  registerService.register(registerInfo);
   
       //if the isValidUser has a user returned
       if( isValidUser.user === null){
-        fileService.getFileContents('../data/users.json');
+        const writeToFile = fileService.writeFileContents('../data/users.json', {id: userID, username: registerInfo.username, email: registerInfo.email, password: registerInfo.password});
         
-        fileService.writeFileContents('../data/users.json', {id: userID, username:"amy", email:"amy@work.com", password: "4321" });
+        // fileService.writeFileContents('../data/users.json', {id: userID, username:"amy", email:"amy@work.com", password: "4321" });
         res.redirect('/login');
       }
 

@@ -20,6 +20,12 @@ exports.getFileContents = (filePath)=>{
      
 }
 
+const getFileContents = (filePath)=>{
+    let fileContents = JSON.parse(fs.readFileSync(path.join(__dirname, filePath)));
+    return fileContents;
+      
+ }
+
 exports.writeFileContents = (filePath, data) =>{
     let fileContents = getFileContents(filePath);
     fileContents.push(data);
