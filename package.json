@@ -1,7 +1,7 @@
 {
   "name": "dmit2008-assignment2a",
   "version": "1.0.0",
-  "description": "A client application that is deployed through Heroku. It will have a dashboard, a login form and a registration form.",
+  "description": "A client application that is deployed through Heroku. It will have a dashboard, a login form and a registration form. The login and registration will both have validation.",
   "main": "server.js",
   "scripts": {
     "server": "nodemon server/index.js  --watch ./server",
