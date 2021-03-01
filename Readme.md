@@ -16,20 +16,27 @@ The gitignore file makes sure that nodemodules are not uploaded to git. Please s
 
 What to install (using terminal):
 1. Install Node Modules
+
     a. npm init
+
     b. npm install -D parcel-bundler
+
     c. npm install
 
 2. Install express.js middleware for validator
+
     a. npm install express-validator
 
 3. Install express-session, creates a session middleware
+
     a. npm install express-session
 
 4. Install uuid, creates unique id for each user
+
     a. npm install uuid
 
 5. Install cors
+
     a. npm install cors
 
 
