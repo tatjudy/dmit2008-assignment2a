@@ -431,6 +431,10 @@ a:after {
   padding: 3px;
 }
 
+.user div:last-of-type {
+  border: none;
+}
+
 .user h3 {
   font-size: 24px;
   color: #2F4F4F;
