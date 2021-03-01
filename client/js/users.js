@@ -1,3 +1,5 @@
+//create variables for writing to the DOM
+
 let usersDisplay,
 user,
 id,
@@ -25,7 +27,7 @@ theEmailText,
 thePasswordText;
 
 let body = document.querySelector('body');
-
+//fetch the data from server
 function usersModel(url) {
     //get the data
     console.log('hi');
@@ -45,7 +47,7 @@ function usersModel(url) {
 }
 
 usersModel('/api/v1/users');
-
+//create the user view in the DOM
 function createUserView (theData) {
     usersDisplay = document.createElement('div');
     user = document.createElement('div');
@@ -66,10 +68,10 @@ function createUserView (theData) {
     thePassword = document.createElement('p');
 
     userHeadingText = document.createTextNode(theData.username);
-    idHeadingText = document.createTextNode('The ID');
-    usernameHeadingText = document.createTextNode('The Username');
-    emailHeadingText = document.createTextNode('The Email');
-    passwordHeadingText = document.createTextNode('The Password');
+    idHeadingText = document.createTextNode('ID');
+    usernameHeadingText = document.createTextNode('Username');
+    emailHeadingText = document.createTextNode('Email');
+    passwordHeadingText = document.createTextNode('Password');
 
     theIdText = document.createTextNode(theData.id);
     theUsernameText = document.createTextNode(theData.username);
