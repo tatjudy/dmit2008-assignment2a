@@ -31,7 +31,7 @@ exports.authenticate = (credential)=>{
         authObj.user = user;
     }
          
-    return authObj
+    return authObj;
 
    }, {validEmail:false, validPassword:false, user:null});
 
@@ -39,16 +39,20 @@ exports.authenticate = (credential)=>{
     // if() else
     // truthy falsy
    const auth0 = authUser.user ? {user:authUser.user}: formatErrors(authUser);
-   return auth0
+   return auth0;
 
 }
  
 const formatErrors = function(user){
-  let passwordWarning = ""
-  let emailWarning = ""
+  let passwordWarning = "";
+  let emailWarning = "";
 
-  if(user.validPassword === false){passwordWarning= `password doesn't seem to be correct`}
-  if(user.validEmail === false){ emailWarning= `email doesn't seem to be correct`}
+  if(user.validPassword === false){
+    passwordWarning= `password doesn't seem to be correct`;
+  }
+  if(user.validEmail === false){
+    emailWarning= `email doesn't seem to be correct`;
+  }
 
-  return {user:null, emailWarning, passwordWarning}
+  return {user:null, emailWarning, passwordWarning};
 }

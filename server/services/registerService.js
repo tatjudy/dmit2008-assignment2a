@@ -27,7 +27,7 @@ exports.register = (registerInfo)=>{
          authObj.user = user;
      }
           
-     return authObj
+     return authObj;
  
     }, {validEmail:false, validPassword:false, user:null});
  
@@ -37,17 +37,21 @@ exports.register = (registerInfo)=>{
     const auth0 = authUser.user ? {user:authUser.user}: formatErrors(authUser);
 
 
-    return auth0
+    return auth0;
  }
  
 const formatErrors = function(user){
   let usernameWarning = "";
   let emailWarning = "";
 
-  if(user.validUsername === false){usernameWarning= `username already exists`}
-  if(user.validEmail === false){ emailWarning= `email already exists`}
+  if(user.validUsername === false){
+    usernameWarning= `username already exists`;
+  }
+  if(user.validEmail === false){
+    emailWarning= `email already exists`;
+  }
 
-  return {user:null, usernameWarning, emailWarning}
+  return {user:null, usernameWarning, emailWarning};
 }
 
 

@@ -34,7 +34,6 @@ app.use(cors());
  app.get('/api/v1/users', (req, res) => {
   const readUsersFile = fileService.getFileContents('../data/users.json');
   res.json(readUsersFile);
-  return theData;
 });
 
  // Session Middleware
