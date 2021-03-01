@@ -4,14 +4,15 @@ A client application that is deployed through Heroku. It will have a dashboard, 
 The dashboard is only accessible to logged in users.
 The login and register pages both have client side validation/authentication.
 The login page has server side validation/authentication.
+
 The users page is a bonus feature which retrieves the JSON data from the server and displays it. To do this, in the index.js we create a REST API with NODE using the url /api/v1/users
 
 
 Link to Heroku App:
 
-The Procfile specifies the commancs that are executed by the app on startup.
+The Procfile specifies the commands that are executed by the app on startup.
 
-What to install:
+What to install (using terminal):
 1. Install Node Modules
     a. npm init
     b. npm install -D parcel-bundler
@@ -27,7 +28,7 @@ What to install:
     a. npm install uuid
 
 5. Install cors
-    1. npm install cors
+    a. npm install cors
 
 
 Note: the server side authentication works for the login, but not the register. For the register page, the goal is to check if there is already a user with the submitted form information. If there is, errors will show up on the ejs view. If not, it will redirect to the login page.
