@@ -4,7 +4,7 @@ A client application that is deployed through Heroku. It will have a dashboard, 
 The dashboard is only accessible to logged in users.
 The login and register pages both have client side validation/authentication.
 The login page has server side validation/authentication.
-The users page is a bonus feature which retrieves the JSON data from the server and displays it.
+The users page is a bonus feature which retrieves the JSON data from the server and displays it. To do this, in the index.js we create a REST API with NODE using the url /api/v1/users
 
 
 Link to Heroku App:

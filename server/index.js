@@ -30,6 +30,7 @@ app.use(cors());
  app.use(express.urlencoded({extended:true}));
  app.use(express.json());
 
+ //create the REST API for the bonus feature, users.html
  app.get('/api/v1/users', (req, res) => {
   const readUsersFile = fileService.getFileContents('../data/users.json');
   res.json(readUsersFile);
@@ -51,12 +52,6 @@ app.use(cors());
  
 app.use(express.static(path.join(__dirname, "../client"), {extensions: ["html", 'htm']}));
 
- 
- // Routing Middleware.  
- // login route.
- // Access Form Data uses the POST method from the req body.
- // Tell Express that you want to access POST Request body
- // Setup   app.use(express.urlencoded({extended:true}))
 
  // Protected Route
  app.get('/dashboard', (req, res)=>{
@@ -150,11 +145,10 @@ app.get('/register', (req, res) => {
    // isValudUser.user !=null...
    const isValidUser =  registerService.register(registerInfo);
   
-      //if the isValidUser has a user returned
+      //check if the user exists, if not, register them, write their inputs to users.json file
       if( isValidUser.user === null){
         const writeToFile = fileService.writeFileContents('../data/users.json', {id: userID, username: registerInfo.username, email: registerInfo.email, password: registerInfo.password});
-        
-        // fileService.writeFileContents('../data/users.json', {id: userID, username:"amy", email:"amy@work.com", password: "4321" });
+        //after writing, redirect to login page
         res.redirect('/login');
       }
 
@@ -184,30 +178,7 @@ app.post('/register', (req, res)=>{
    res.end();
 
 });
- 
-// <%- usernameWarning %>
-//  app.post('/register', (req, res) => {
 
-//   const registerInfo = {
-//     username:req.body.username,
-//     email:req.body.email,
-//     password:req.body.password
-//   };
-  
-//   const registerTheInfo =  registerService.register(registerInfo);
-
-//   const checkErrors = registerService.registerErrors(registerInfo);
-
-//   if (registerInfo.username === '') {
-//     res.render('register', {
-//       emailWarning: registerInfo.usernameWarning,
-//       usernameWarning: registerInfo.emailWarning,
-//       passwordWarning: registerInfo.passwordWarning
-//     });
-
-//   }
-
-//  });
 
  
 
