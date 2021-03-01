@@ -12,6 +12,8 @@ Link to Heroku App:
 
 The Procfile specifies the commands that are executed by the app on startup.
 
+The gitignore file makes sure that nodemodules are not uploaded to git. Please see here what to install.
+
 What to install (using terminal):
 1. Install Node Modules
     a. npm init
